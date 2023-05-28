@@ -1,8 +1,6 @@
 ### CRUD Operations for BookTrack
 
-```
 This repository contains code snippets for performing CRUD operations (Create, Read, Update, Delete) on a book management system. Below you will find instructions on how to use each operation.
-```
 
 ### Delete
 
