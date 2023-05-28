@@ -41,20 +41,7 @@ To update the information of a book in the system, send a PUT request to the fol
 PUT /book/{id}
 ```
 
-Replace {id} with the unique identifier of the book you want to update. Include the updated book information in the request body in JSON format. In BookTrack, we use this:
-
-```json
-{
-  "title": "New Title",
-  "author": "New Author",
-  "publication_date": "New Publication Date",
-  "isbn": "New ISBN",
-  "uuid": "New UUID",
-  "genre": "New Genre",
-  "synopsis": "New Synopsis"
-}
-```
-Make sure to replace the fields with the updated values.
+Replace {id} with the unique identifier of the book you want to update. Include the updated book information in the request body in JSON format.
 
 ### Read
 
@@ -72,18 +59,4 @@ To add a new book to the system, send a POST request to the following endpoint:
 ```javascript
 POST /book
 ```
-
-Include the book information in the request body in JSON format. Here's an example:
-
-```json
-{
-  "title": "New Title",
-  "author": "New Author",
-  "publication_date": "New Publication Date",
-  "isbn": "New ISBN",
-  "uuid": "New UUID",
-  "genre": "New Genre",
-  "synopsis": "New Synopsis"
-}
-```
-Make sure to provide all the required fields for the new book.
+Include the book information in the request body in JSON format. Make sure to provide all the required fields for the new book.
