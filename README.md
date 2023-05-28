@@ -16,7 +16,7 @@ Replace {id} with the unique identifier of the book you want to delete.
 To update the information of a book in the system, send a PUT request to the following endpoint:
 
 ```javascript
-PUT /books/{id}
+PUT /book/{id}
 ```
 
 Replace {id} with the unique identifier of the book you want to update. Include the updated book information in the request body in JSON format. In BookTrack, we use this:
