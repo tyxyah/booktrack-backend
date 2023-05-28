@@ -2,7 +2,7 @@
 
 This repository contains an AWS Lambda function implemented in JavaScript that interacts with Amazon DynamoDB. The Lambda function is designed to store items in a DynamoDB table when triggered by an event.
 
-# #Test an AWS Lambda Function with a JSON Event
+## Test an AWS Lambda Function with a JSON Event
 
 To test an AWS Lambda function with a JSON event, you can create a JSON file that represents the event data and use it as input during the testing process. Here's an example of a JSON event file you can use to test the Lambda function:
 
