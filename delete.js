@@ -11,8 +11,7 @@ export const handler = async(event) => {
     const DCI = {
             TableName : tableName,
             Key : {
-                  title: event.title,
-                  author: event.author,
+                  title: event.uuid,
             }
     };
     
