@@ -15,7 +15,7 @@ export const handler = async (event) => {
         TableName: tableName,
         Item: eventBody,
         Key: {
-            title: event.uuid,
+            uuid: event.uuid,
         },
     };
 
