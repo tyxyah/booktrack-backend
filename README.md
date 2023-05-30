@@ -6,6 +6,7 @@ This repository contains an AWS Lambda function implemented in JavaScript that i
 
 To test an AWS Lambda function with a JSON event, you can create a JSON file that represents the event data and use it as input during the testing process. Here's an example of a JSON event file you can use to test the Lambda function:
 
+1. Delete, Update, Read, and Create Function
 ```json
 {
   "title": "New Title",
@@ -17,8 +18,41 @@ To test an AWS Lambda function with a JSON event, you can create a JSON file tha
   "synopsis": "New Synopsis"
 }
 ```
-
 In this example, the JSON event file contains seven attributes: title, author, publication_date, isbn, uuid, genre, and synopsis.
+
+2. Get List Function
+
+```json
+[
+  {
+    "title": "Wonwoo",
+    "author": "kfhsdjfh",
+    "publication_date": "28/05/2023",
+    "isbn": "85720957289",
+    "uuid": "937057205",
+    "genre": "Biography",
+    "synopsis": "test"
+  },
+  {
+    "title": "sdvfs",
+    "author": "kjjfkl",
+    "publication_date": "28/05/2023",
+    "isbn": "85720957289",
+    "uuid": "937057205",
+    "genre": "Biography",
+    "synopsis": "adfadf"
+  },
+  {
+    "title": "vnjfd",
+    "author": "o23uir",
+    "publication_date": "28/05/2023",
+    "isbn": "85720957289",
+    "uuid": "937057205",
+    "genre": "Biography",
+    "synopsis": "afae"
+  }
+]
+```
 
 ## CRUD Operations for BookTrack
 
@@ -60,3 +94,12 @@ To add a new book to the system, send a POST request to the following endpoint:
 POST /book
 ```
 Include the book information in the request body in JSON format. Make sure to provide all the required fields for the new book.
+
+### Get List
+
+To retrieve the list of books, send a GET request to the following endpoint:
+
+```javascript
+GET /book/list
+```
+This endpoint will return a JSON response containing information about all the books in the system.
