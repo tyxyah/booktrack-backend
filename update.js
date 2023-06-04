@@ -7,13 +7,10 @@ const ddb = DynamoDBDocumentClient.from(client);
 const tableName = "booktrack-book";
 
 export const handler = async(event) => {
-
-    console.log(event);
-    const eventBody = event;
     
     const UpdateCommandInput = {
             TableName: tableName,
-            Item: eventBody,
+            Item: event,
             Key: {
               uuid: event.uuid,
             },
