@@ -1,30 +1,66 @@
-import { DynamoDBClient} from "@aws-sdk/client-dynamodb";
-import {DynamoDBDocumentClient, UpdateCommand} from "@aws-sdk/lib-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 
 const client = new DynamoDBClient({});
 const ddb = DynamoDBDocumentClient.from(client);
 
 const tableName = "booktrack-book";
 
-export const handler = async(event) => {
+export const handler = async (event) => {
 
-    console.log(event);
-    const eventBody = event;
+    const book = {
+        title: event.title,
+        author: event.author,
+        publication_date: event.publication_date,
+        isbn: event.isbn,
+        uuid : event.uuid,
+        genre: event.genre,
+        synopsis: event.synopsis,
+    }
     
-    const UpdateCommandInput = {
+    try {
+        const UCI = {
             TableName: tableName,
-            Item: eventBody,
+            Item: book,
             Key: {
-              uuid: event.uuid,
-            },
-    };
-    
-    const result = await ddb.send(new UpdateCommand(UpdateCommandInput));
-    console.log(result);
-        
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify(result),
-    };
-    return response;
+                uuid: book.uuid
+
+            }
+        }
+
+        const result = await ddb.send(new PutCommand(UCI));
+        console.log(result);
+
+        const response = {
+            statusCode: 200,
+            body: JSON.stringify({ result: result, message: "Successfully update the book!" }),
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true,
+            }
+        };
+        return response;
+    }
+    catch (e) {
+        console.log(e)
+        const body = {
+            result: "Failed!",
+            message: "Fail to update book in database, please refer to logs",
+            error_name: e.name,
+            error_message: e.message,
+            error_stack: e.stack
+        }
+
+        const response = {
+            statusCode: 500,
+            body: JSON.stringify(body),
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true,
+            }
+        }
+        return response;
+    }
+
+
 };
