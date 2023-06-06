@@ -8,15 +8,7 @@ const tableName = "booktrack-book";
 
 export const handler = async (event) => {
 
-    const book = {
-        title: event.title,
-        author: event.author,
-        publication_date: event.publication_date,
-        isbn: event.isbn,
-        uuid : event.uuid,
-        genre: event.genre,
-        synopsis: event.synopsis,
-    }
+    const book = JSON.parse(event.body);
     
     try {
         const UCI = {
